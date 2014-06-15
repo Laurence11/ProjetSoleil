@@ -1,0 +1,4 @@
+soleil_site_eft:
+    resource: "@SoleilSiteEftBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,12 @@
+{# formulaire de contact #}
+<h2>Nous contacter</h2>
+<form action="{{path('soleil_site_eft_contact_send') }}" method="post">
+                                                            
+            <p><input type="text" name="prenom" placeholder="Votre prénom" /></p>
+            <p><input type="text" name="nom"  placeholder="Votre nom" /></p>
+            <p><input type="email" name="mail"  placeholder="Votre mail" /></p>
+            <p><input type="text" name="sujet" placeholder="Sujet de votre courrier" /></p>
+            <p><textarea name="message" placeholder="Votre message"></textarea></p>
+            <p><input type="submit" /></p>
+                                                            
+</form>

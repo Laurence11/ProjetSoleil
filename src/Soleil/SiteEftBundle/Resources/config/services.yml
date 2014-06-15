@@ -1,0 +1,7 @@
+parameters:
+#    soleil_site_eft.example.class: Soleil\SiteEftBundle\Example
+
+services:
+#    soleil_site_eft.example:
+#        class: %soleil_site_eft.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

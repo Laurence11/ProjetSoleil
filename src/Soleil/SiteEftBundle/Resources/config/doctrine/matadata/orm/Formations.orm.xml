@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Formations" table="formations">
+    <indexes>
+      <index name="fk_formations_categories1_idx" columns="categorie"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="255" nullable="false"/>
+    <field name="nomEn" type="string" column="nom_en" length="255" nullable="true"/>
+    <field name="texte" type="text" column="texte" nullable="false"/>
+    <field name="texteEn" type="text" column="texte_en" nullable="true"/>
+    <field name="prix" type="decimal" column="prix" precision="10" scale="2" nullable="false"/>
+    <field name="participantmax" type="smallint" column="participantMax" nullable="false"/>
+    <field name="date" type="datetime" column="date" nullable="false"/>
+    <many-to-one field="categorie" target-entity="Categories">
+      <join-columns>
+        <join-column name="categorie" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="participants" target-entity="Participants" inversed-by="formations">
+      <join-table name="reservations">
+        <join-columns>
+          <join-column name="formations" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="participants" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

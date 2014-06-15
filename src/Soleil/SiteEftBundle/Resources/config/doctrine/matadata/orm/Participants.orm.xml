@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Participants" table="participants">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="45" nullable="false"/>
+    <field name="mail" type="string" column="mail" length="100" nullable="false"/>
+    <many-to-many field="formations" target-entity="Formations" mapped-by="participants"/>
+  </entity>
+</doctrine-mapping>

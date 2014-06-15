@@ -1,0 +1,10 @@
+{# empty Twig template #}
+{% for video in videos %}
+    <h3>{{ video.nom }}</h3>
+    <p>{{video.texte}}</p>
+    <p>
+        {{ video.url|raw }}
+    </p>
+    
+{% endfor %}
+

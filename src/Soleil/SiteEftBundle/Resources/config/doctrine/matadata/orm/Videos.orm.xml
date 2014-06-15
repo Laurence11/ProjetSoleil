@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Videos" table="videos">
+    <indexes>
+      <index name="fk_videos_categories1_idx" columns="categorie"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
+    <field name="nomEn" type="string" column="nom_en" length="45" nullable="true"/>
+    <field name="texte" type="text" column="texte" nullable="true"/>
+    <field name="texteEn" type="text" column="texte_en" nullable="true"/>
+    <field name="url" type="string" column="url" length="255" nullable="false"/>
+    <many-to-one field="categorie" target-entity="Categories">
+      <join-columns>
+        <join-column name="categorie" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

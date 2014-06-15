@@ -1,0 +1,42 @@
+{#les categoriess du site
+Nom du Bundle : SoleilSiteEftBundle
+Controller : Categorie
+Action : detail
+Pour tester : /accueil
+Route : soleil_site_eft_pages - Paramêtre : slug
+Variables disponibles : 
+    - categorie: contenu de la categorie
+                (id, nom, texte, slug)#}
+{% extends '::templateGeneral.html.twig' %}
+{% block title %}{{ parent() }} - {{categorie.nom}}{% endblock %}
+
+{% block content %}
+
+<div>
+    {{categorie.texte}}
+</div>
+{% if categorie.slug == 'nos_activites' %}
+         {{ render (controller('SoleilSiteEftBundle:Article:listeArticles')) }}
+          {% endif %}  
+{% if categorie.slug == 'acceuil'%}
+        {{render (controller('SoleilSiteEftBundle:Article:articleAcceuil'))}},
+        {{render (controller('SoleilSiteEftBundle:Video:videoAcceuil'))}},
+        {{render (controller('SoleilSiteEftBundle:Article:articleVedette'))}}
+{% endif%}
+{% if categorie.slug == 'contact'%}
+        <h2>Nos coordonnées</h2>
+        <h3>Avec le Soleil ASBL</h3>
+        <p>rue de la Chaudronnerie 15</p>
+        <p>4230 Grivegnée</p>
+        {% include "SoleilSiteEftBundle:Contacts:contact.html.twig" %}
+        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q=Rue+de+la+Chaudronnerie+14,+Li%C3%A8ge,+Belgique&amp;aq=0&amp;oq=rue&amp;sll=37.0625,-95.677068&amp;sspn=50.644639,93.076172&amp;ie=UTF8&amp;hq=&amp;hnear=Rue+de+la+Chaudronnerie+14,+4030+Li%C3%A8ge,+Belgique&amp;t=m&amp;z=14&amp;ll=50.631895,5.627435&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=fr&amp;geocode=&amp;q=Rue+de+la+Chaudronnerie+14,+Li%C3%A8ge,+Belgique&amp;aq=0&amp;oq=rue&amp;sll=37.0625,-95.677068&amp;sspn=50.644639,93.076172&amp;ie=UTF8&amp;hq=&amp;hnear=Rue+de+la+Chaudronnerie+14,+4030+Li%C3%A8ge,+Belgique&amp;t=m&amp;z=14&amp;ll=50.631895,5.627435" style="color:#0000FF;text-align:left">Agrandir le plan</a></small>
+{% endif %}
+{% if categorie.slug == 'videos'%}
+        {{render (controller('SoleilSiteEftBundle:Video:listeVideos'))}}
+{% endif %}
+{% if categorie.slug == 'agenda'%}
+        {{render (controller('SoleilSiteEftBundle:Formation:listeFormations'))}}, 
+        {{render (controller('SoleilSiteEftBundle:Participant:inscription'))}}
+{% endif %}    
+{% endblock %}
+

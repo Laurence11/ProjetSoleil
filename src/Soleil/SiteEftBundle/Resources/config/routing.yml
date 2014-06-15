@@ -1,0 +1,9 @@
+soleil_site_eft_pages:
+    pattern:  /{slug}
+    defaults: { _controller: SoleilSiteEftBundle:Categorie:detail }
+soleil_site_eft_contact_send:
+    pattern:  /envoi
+    defaults: { _controller: SoleilSiteEftBundle:Contact:send }
+soleil_site_eft_participant_inscription:
+    pattern:  /inscription
+    defaults: { _controller: SoleilSiteEftBundle:Participant:inscription }  

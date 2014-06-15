@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Articles" table="articles">
+    <indexes>
+      <index name="fk_articles_categories1_idx" columns="categorie"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="255" nullable="false"/>
+    <field name="nomEn" type="string" column="nom_en" length="255" nullable="true"/>
+    <field name="texte" type="text" column="texte" nullable="false"/>
+    <field name="texteEn" type="text" column="texte_en" nullable="true"/>
+    <field name="date" type="datetime" column="date" nullable="false"/>
+    <field name="vedette" type="boolean" column="vedette" nullable="false"/>
+    <field name="presentationaccueil" type="boolean" column="presentationAccueil" nullable="false"/>
+    <many-to-one field="categorie" target-entity="Categories">
+      <join-columns>
+        <join-column name="categorie" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,11 @@
+{# empty Twig template #}
+<h2>Nos Formations</h2>
+{% for formation in formations %}
+<h3>{{formation.nom}}</h3>
+        <p>{{formation.texte}}</p>
+        <p>PRIX : {{formation.prix}} Euros</p>
+        <p>DATE DEBUT : {{formation.dateDebut|date('d-m-y')}}</p>
+        <p>DATE FIN : {{formation.dateFin|date('d-m-y')}}</p>
+        <p>Nombre de participants maximum : {{formation.participantMax}}</p>
+{% endfor %}
+

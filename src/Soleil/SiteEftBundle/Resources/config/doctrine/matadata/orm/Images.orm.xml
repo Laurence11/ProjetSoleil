@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Images" table="images">
+    <indexes>
+      <index name="fk_images_articles1_idx" columns="article"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="100" nullable="false"/>
+    <field name="texte" type="text" column="texte" nullable="true"/>
+    <field name="texteEn" type="text" column="texte_en" nullable="true"/>
+    <field name="url" type="string" column="url" length="100" nullable="false"/>
+    <many-to-one field="article" target-entity="Articles">
+      <join-columns>
+        <join-column name="article" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

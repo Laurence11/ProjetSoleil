@@ -1,0 +1,84 @@
+<?php
+
+namespace Soleil\SiteEftBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Articles
+ *
+ * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_articles_categories1_idx", columns={"categorie"})})
+ * @ORM\Entity
+ */
+class Articles
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_en", type="string", length=255, nullable=true)
+     */
+    private $nomEn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte", type="text", nullable=false)
+     */
+    private $texte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte_en", type="text", nullable=true)
+     */
+    private $texteEn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vedette", type="boolean", nullable=false)
+     */
+    private $vedette;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="presentationAccueil", type="boolean", nullable=false)
+     */
+    private $presentationaccueil;
+
+    /**
+     * @var \Categories
+     *
+     * @ORM\ManyToOne(targetEntity="Categories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorie", referencedColumnName="id")
+     * })
+     */
+    private $categorie;
+
+
+}

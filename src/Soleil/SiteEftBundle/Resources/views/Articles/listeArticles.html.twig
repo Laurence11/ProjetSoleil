@@ -1,0 +1,24 @@
+{#
+page avec la liste des articles
+Apparait dans le template détail des Categories
+methode d'heritage : render controler
+Nom du Bundle : SoleilSiteEftBundle
+Controller : Article
+Action/listeArticles : liste de tout les articles 
+Pour tester : /articles
+Variables a récupérer : 
+    - articles : reprend tous les articles
+                (id, nom, texte, date )
+#}
+
+{% for article in articles %}
+
+<h2>{{article.nom}}</h2>
+<p>{{article.texte}}</p>
+{#<p>{{article.date|date('m-d-y')}}</p>#}
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!--BOUTON J'AIME DE FACEBOOK-->          
+<iframe src="http://www.facebook.com/plugins/like.php?href=http://ocalhost:8888/ProjetSoleil/web/app_dev.php/acceuil&amp;layout=standard&amp;show_faces=false&amp;width=400&amp;action=like&amp;colorscheme=light&amp;height=24" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:24px;" allowTransparency="true"></iframe> 
+<!--FIN DU BOUTON J'AIME-->
+{% endfor %}

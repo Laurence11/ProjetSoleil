@@ -1,0 +1,63 @@
+<?php
+
+namespace Soleil\SiteEftBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Images
+ *
+ * @ORM\Table(name="images", indexes={@ORM\Index(name="fk_images_articles1_idx", columns={"article"})})
+ * @ORM\Entity
+ */
+class Images
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte", type="text", nullable=true)
+     */
+    private $texte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="texte_en", type="text", nullable=true)
+     */
+    private $texteEn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=100, nullable=false)
+     */
+    private $url;
+
+    /**
+     * @var \Articles
+     *
+     * @ORM\ManyToOne(targetEntity="Articles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="article", referencedColumnName="id")
+     * })
+     */
+    private $article;
+
+
+}

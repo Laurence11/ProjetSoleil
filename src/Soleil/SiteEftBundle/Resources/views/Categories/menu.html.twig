@@ -1,0 +1,14 @@
+{#le menu du site
+Nom du Bundle : SoleilSiteEftBundle
+Controller : Categorie
+Action : menu
+Pour tester : /accueil / 
+Variables disponibles : 
+    - page:(nom,slug, texte)#}
+<ul>
+{% for categorie in categories%}
+
+    <li><a href="{{path('soleil_site_eft_pages',{'slug' : categorie.slug})}}">{{categorie.nom}}</a></li>
+         
+{%endfor%}
+ </ul>
